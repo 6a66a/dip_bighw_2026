@@ -1,0 +1,9 @@
+Datasets/*
+!Datasets/new.yaml
+
+runs/
+*.pt
+*.weights
+
+__pycache__/
+*.py[cod]

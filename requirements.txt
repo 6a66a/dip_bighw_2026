@@ -1,0 +1,8 @@
+-r yolov5/requirements.txt
+kagglehub>=0.3.0
+albumentations>=1.0.3
+pycocotools>=2.0.6
+mss>=9.0.1
+pafy>=0.5.5
+tensorboard>=2.4.1
+flask>=2.3.0

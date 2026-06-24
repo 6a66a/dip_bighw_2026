@@ -1,0 +1,8 @@
+path: D:\Pythonfiles\dip\Project\Big_hw\Datasets\new_data
+train: images/train
+val: images/test
+test: images/test
+
+nc: 1
+names:
+  0: litter
