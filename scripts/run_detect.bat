@@ -18,7 +18,7 @@ set "OUTPUT=%RESULT_DIR%\boxed_images"
 
 REM Optional validation/evaluation output
 set RUN_EVAL=1
-set "DATA_YAML=%PROJECT_DIR%\Datasets\new_gap20_valtest_clean_hsi_i_darkest25.yaml"
+set "DATA_YAML=%PROJECT_DIR%\new_gap20_valtest_clean_hsi_i_darkest25.yaml"
 set EVAL_SPLIT=test
 set "EVAL_OUTPUT=%RESULT_DIR%"
 

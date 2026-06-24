@@ -1,0 +1,8 @@
+path: ../Datasets/new_data_gap20_valtest_clean
+train: images/train
+val: images/val
+test: images/test
+
+nc: 1
+names:
+  0: litter

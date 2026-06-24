@@ -19,7 +19,9 @@ pip install -r requirements.txt
 ```
 
 ## 关于数据集
-
+下载链接：
+通过网盘分享的文件：`Datasets.zip`
+链接: `https://pan.baidu.com/s/19ACydzlfxgUoYkssv7-jBg` 提取码: `dvx4`
 `Datasets/new_data_gap20_valtest_clean` 是训练用的数据集。
 
 `Datasets/new_data_gap20_valtest_clean_hsi_i_darkest25` 是按层将每个集合中亮度最低的 25% 抽取出来构成的低光照子集。

@@ -9,7 +9,7 @@ rem ==========================================
 rem 1. Paths
 for %%I in ("%~dp0..") do set "PROJECT_ROOT=%%~fI"
 set "YOLO_DIR=%PROJECT_ROOT%\yolov5"
-set "DATA_YAML=%PROJECT_ROOT%\Datasets\new_gap20_valtest_clean.yaml"
+set "DATA_YAML=%PROJECT_ROOT%\new_gap20_valtest_clean.yaml"
 set "PROJECT_DIR=%PROJECT_ROOT%\runs"
 
 rem 2. Model weights: yolov5n.pt, yolov5s.pt, yolov5m.pt, yolov5l.pt, yolov5x.pt
