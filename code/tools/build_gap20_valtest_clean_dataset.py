@@ -105,8 +105,6 @@ def select_test_additions(base_test, pool, target_test, seed):
             rng.shuffle(group_order)
             continue
 
-        # Prefer one test sample per group, and within a group choose the sample
-        # that sacrifices the fewest neighboring training-pool samples.
         candidate = min(
             group_candidates,
             key=lambda entry: (
@@ -311,18 +309,7 @@ def main():
     write_yaml(OUTPUT_YAML, OUTPUT_DATASET)
     write_reports(assignments, excluded_reasons, counts, violations, nearest, len(entries))
 
-    print(f"Source images: {len(entries)}")
-    print(f"Kept images: {sum(image_count for image_count, _ in counts.values())}")
-    print(f"Excluded images: {len(excluded_reasons)}")
-    for split in SPLITS:
-        image_count, label_count = counts[split]
-        print(f"{split}: images={image_count}, labels={label_count}")
-    if nearest is not None:
-        distance, a, split_a, b, split_b = nearest
-        print(f"Nearest cross-split pair: {distance} frames ({split_a}/{a.name} vs {split_b}/{b.name})")
-    print(f"YAML: {OUTPUT_YAML}")
-    print(f"Summary: {SUMMARY_TXT}")
-    print(f"Assignments: {ASSIGNMENTS_CSV}")
+    print(f"Done: {OUTPUT_DATASET}")
 
 
 if __name__ == "__main__":

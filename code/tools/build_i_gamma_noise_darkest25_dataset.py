@@ -194,16 +194,7 @@ def main():
     subset_counts = count_dataset(SUBSET_OUTPUT)
     threshold = max(row["source_i_mean"] for row in selected)
 
-    print(f"Source dataset: {SOURCE_DATASET}")
-    print(f"Formula: I' = I^{GAMMA} + N(0, {SIGMA}^2), clipped to [0, 1]")
-    print(f"Random seed: {SEED}")
-    print(f"Darkest {PERCENTILE}% selected: {len(selected)}")
-    print(f"Selection threshold on source clean data: I_mean <= {threshold:.8f}")
-    for split, (image_count, label_count) in subset_counts.items():
-        print(f"subset {split}: images={image_count}, labels={label_count}")
-    print(f"Subset output: {SUBSET_OUTPUT}")
-    print(f"Subset yaml: {SUBSET_YAML}")
-    print(f"Report: {REPORT_CSV}")
+    print(f"Done: {SUBSET_OUTPUT}")
 
 
 if __name__ == "__main__":

@@ -123,8 +123,6 @@ def build_dataset(input_root, output_root, delta):
         relative_path = image_path.relative_to(test_input)
         output_path = (test_output / relative_path).with_suffix(".jpg")
         darken_image_hsi(image_path, output_path, delta)
-        if index % 25 == 0 or index == len(image_paths):
-            print(f"Processed {index}/{len(image_paths)} test images")
 
     return len(image_paths)
 
@@ -148,8 +146,7 @@ def parse_args():
 def main():
     args = parse_args()
     count = build_dataset(Path(args.input), Path(args.output), args.delta)
-    print(f"Done. Darkened {count} test images.")
-    print(f"Output dataset: {Path(args.output)}")
+    print(f"Done: {Path(args.output)}")
 
 
 if __name__ == "__main__":

@@ -50,7 +50,6 @@ def extract_images_and_labels():
             print(f"Missing image directory: {img_dir}")
             continue
 
-        print(f"Processing {split_name}...")
         with open(json_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
@@ -115,15 +114,7 @@ def extract_images_and_labels():
         total_images += split_images
         total_labels.update(split_labels)
 
-        print(f"  images: {split_images}")
-        for name in target_categories:
-            print(f"  {name}: {split_labels[name]}")
-
-    print("\nDone.")
-    print(f"Output: {output_dir}")
-    print(f"Total images: {total_images}")
-    for name in target_categories:
-        print(f"Total {name}: {total_labels[name]}")
+    print(f"Done: {output_dir}")
 
 
 if __name__ == "__main__":

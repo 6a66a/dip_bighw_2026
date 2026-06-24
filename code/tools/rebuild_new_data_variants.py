@@ -69,8 +69,6 @@ def build_dark_dataset(source_root, output_root, delta):
         for index, image_path in enumerate(image_paths, start=1):
             target = output_dir / image_path.relative_to(source_dir)
             darken_image_hsi(image_path, target, delta)
-            if index % 100 == 0 or index == len(image_paths):
-                print(f"Darkened {split}: {index}/{len(image_paths)}")
         total += len(image_paths)
 
     return total
@@ -109,21 +107,16 @@ def main():
     dark_tmp = DARK_DATASET.with_name(f"{DARK_DATASET.name}_tmp")
     gamma_tmp = GAMMA_DATASET.with_name(f"{GAMMA_DATASET.name}_tmp")
 
-    print("Building darkened dataset...")
     total_dark = build_dark_dataset(SOURCE_DATASET, dark_tmp, delta=0.3)
     validate_dataset(dark_tmp)
 
-    print("Building gamma dataset...")
     apply_gamma_to_dataset(dark_tmp, gamma_tmp, gamma_value=0.8)
     validate_dataset(gamma_tmp)
 
-    print("Replacing final dataset directories...")
     replace_dataset(dark_tmp, DARK_DATASET)
     replace_dataset(gamma_tmp, GAMMA_DATASET)
 
-    print(f"Done. Darkened images: {total_dark}")
-    print(f"Dark dataset: {DARK_DATASET}")
-    print(f"Gamma dataset: {GAMMA_DATASET}")
+    print(f"Done: {GAMMA_DATASET}")
 
 
 if __name__ == "__main__":

@@ -65,15 +65,12 @@ def measure_image(image_path: Path) -> dict[str, float] | None:
 def classify(metrics: dict[str, float]) -> list[str]:
     categories = []
 
-    # Dim or strongly underexposed images.
     if metrics["mean"] <= 55 or metrics["dark_ratio"] >= 0.40:
         categories.append("dark_or_underexposed")
 
-    # Bright clipped regions, useful for exposure correction examples.
     if metrics["bright_ratio"] >= 0.12 or metrics["low_sat_bright_ratio"] >= 0.08:
         categories.append("overexposed")
 
-    # Low Laplacian variance catches heavy blur and many ghosting/motion-smear cases.
     if metrics["lap_var"] <= 700:
         categories.append("blur_or_ghosting")
 
@@ -153,10 +150,7 @@ def main() -> None:
         writer.writeheader()
         writer.writerows(manifest_rows)
 
-    print(f"Output: {output}")
-    for key, value in counts.items():
-        print(f"{key}: {value}")
-    print(f"Manifest: {manifest}")
+    print(f"Done: {output}")
 
 
 if __name__ == "__main__":

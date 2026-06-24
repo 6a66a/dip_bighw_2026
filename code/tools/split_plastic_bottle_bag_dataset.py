@@ -71,15 +71,7 @@ def main() -> None:
             shutil.move(str(label), str(target_label))
 
     moved = Counter(name for name, _image in selected)
-    print(f"Dataset: {dataset}")
-    print(f"Applied: {args.apply}")
-    print(f"Val ratio: {args.val_ratio}")
-    print()
-    print("group\tbefore_train\tmove_to_val\tremaining_train")
-    for name in sorted(before):
-        print(f"{name}\t{before[name]}\t{moved[name]}\t{before[name] - moved[name]}")
-    print()
-    print(f"Total moved pairs: {len(selected)}")
+    print(f"Done: {dataset}")
 
 
 if __name__ == "__main__":

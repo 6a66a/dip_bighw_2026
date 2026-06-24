@@ -141,14 +141,7 @@ def main():
     write_report(selected, SOURCE_DATASET)
     write_yaml(OUTPUT_YAML, OUTPUT_DATASET)
 
-    print(f"Total images: {len(ranked)}")
-    print(f"Selected darkest {PERCENTILE}%: {len(selected)}")
-    print(f"HSI-I mean threshold: {threshold:.8f}")
-    for split in SPLITS:
-        print(f"{split}: {split_counts[split]}")
-    print(f"Output dataset: {OUTPUT_DATASET}")
-    print(f"Output yaml: {OUTPUT_YAML}")
-    print(f"Report: {REPORT_CSV}")
+    print(f"Done: {OUTPUT_DATASET}")
 
 
 if __name__ == "__main__":

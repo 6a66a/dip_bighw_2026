@@ -118,15 +118,6 @@ def main() -> None:
             summary.append((bad_score, name, gt, pred, matches, misses, false_preds))
 
     summary.sort(reverse=True, key=lambda item: (item[0], len(item[6]), len(item[5])))
-    print(f"Evaluation: conf>={args.conf}, same-class IoU>={args.iou}")
-    print(f"GT: {args.gt}")
-    print(f"Pred: {args.pred}")
-    print()
-    print("name\tGT\tPred\tOK\tMiss\tFalse/Wrong")
-    for _, name, gt, pred, matches, misses, false_preds in summary:
-        print(f"{name}\t{len(gt)}\t{len(pred)}\t{len(matches)}\t{len(misses)}\t{len(false_preds)}")
-
-    print("\nDETAILS")
     copied = []
     for _, name, _gt, _pred, _matches, misses, false_preds in summary:
         if not misses and not false_preds:
@@ -146,37 +137,10 @@ def main() -> None:
             if label_src.exists():
                 shutil.copy2(label_src, label_dst_dir / label_src.name)
             copied.append(name)
-        print(f"\n[{name}]")
-        for _, gt_box, best in misses:
-            overlap, _pred_idx, pred_box = best
-            if pred_box is None:
-                reason = "no prediction"
-            else:
-                reason = (
-                    f"best pred line {pred_box['line']} {class_name(pred_box['cls'])} "
-                    f"conf={pred_box['conf']:.3f} IoU={overlap:.2f}"
-                )
-            box = tuple(round(v, 4) for v in gt_box["box"])
-            print(f"  MISS gt line {gt_box['line']} {class_name(gt_box['cls'])} box={box}; {reason}")
-
-        for _, pred_box, best in false_preds:
-            overlap, _gt_idx, gt_box = best
-            kind = "WRONG_CLASS" if gt_box is not None and overlap >= args.iou and gt_box["cls"] != pred_box["cls"] else "FALSE_POS"
-            if gt_box is None:
-                near = "no GT"
-            else:
-                near = f"nearest gt line {gt_box['line']} {class_name(gt_box['cls'])} IoU={overlap:.2f}"
-            box = tuple(round(v, 4) for v in pred_box["box"])
-            print(
-                f"  {kind} pred line {pred_box['line']} {class_name(pred_box['cls'])} "
-                f"conf={pred_box['conf']:.3f} box={box}; {near}"
-            )
-
     if args.copy_bad_to:
-        print()
-        print(f"Copied {len(copied)} bad samples to: {args.copy_bad_to}")
-        print(f"Images: {args.copy_bad_to / 'images'}")
-        print(f"Labels: {args.copy_bad_to / 'labels'}")
+        print(f"Done: {args.copy_bad_to}")
+    else:
+        print("Done.")
 
 
 if __name__ == "__main__":

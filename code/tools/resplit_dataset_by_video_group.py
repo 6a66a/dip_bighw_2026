@@ -128,9 +128,7 @@ def main() -> None:
     if args.apply:
         report_path.write_text("\n".join(report_lines), encoding="utf-8")
 
-    print("\n".join(report_lines))
-    if args.apply:
-        print(f"Report saved to: {report_path}")
+    print(f"Done: {report_path if args.apply else dataset}")
 
 
 if __name__ == "__main__":

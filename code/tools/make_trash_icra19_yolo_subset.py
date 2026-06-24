@@ -126,7 +126,7 @@ def main() -> None:
 
     for split_index, split in enumerate(("train", "val", "test")):
         stats = copy_split(args.src / split, args.dst / split, args.ratio, args.seed + split_index)
-        split_lists[split] = stats["list_lines"]  # type: ignore[assignment]
+        split_lists[split] = stats["list_lines"]
         report_lines.extend(
             [
                 f"[{split}] images: {stats['images']} -> {stats['selected']}",
