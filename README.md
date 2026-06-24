@@ -7,7 +7,6 @@ conda activate YOLOv5s
 然后切换到本项目根目录（即本 README 所在的目录）
 ## bat
 pip install -r requirements.txt
-
 ==============================================
 ##
 关于数据集
